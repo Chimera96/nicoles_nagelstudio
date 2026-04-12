@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nicoles Nagelstudio in Lauffen am Neckar — Dein Ort für traumhafte Nägel. Maniküre, Pediküre, Gelmodellage, Shellac und Nagelkunst.">
+  <meta name="keywords" content="Nagelstudio, Lauffen am Neckar, Maniküre, Pediküre, Gelmodellage, Shellac, Nagelkunst">
+  <title>Nicoles Nagelstudio | Lauffen am Neckar</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== RESET & VARIABLES ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --coral: #FF6B6B;
+      --coral-dark: #E85555;
+      --yellow: #FFE66D;
+      --yellow-soft: #FFF8E1;
+      --mint: #4ECDC4;
+      --mint-dark: #3DBDB4;
+      --lavender: #C9B1FF;
+      --cream: #FFF5EB;
+      --cream-dark: #F5E6D5;
+      --charcoal: #2D2D2D;
+      --charcoal-light: #555;
+      --white: #FFFFFF;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+      --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.1);
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 32px;
+      --radius-full: 9999px;
+      --font-display: 'Fredoka', sans-serif;
+      --font-body: 'Nunito', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--charcoal);
+      background: var(--cream);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVIGATION ===== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s, box-shadow 0.4s, padding 0.4s;
+    }
+
+    .nav.scrolled {
+      background: rgba(255, 245, 235, 0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-sm);
+      padding: 0.6rem 2rem;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--coral);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--charcoal); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--charcoal);
+      font-weight: 600;
+      font-size: 0.95rem;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--coral);
+      border-radius: var(--radius-full);
+      transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .nav-links a:hover { color: var(--coral); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--coral);
+      color: var(--white) !important;
+      padding: 0.5rem 1.4rem;
+      border-radius: var(--radius-full);
+      font-size: 0.9rem !important;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--coral-dark) !important; color: var(--white) !important; transform: scale(1.05); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+      z-index: 1001;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: var(--charcoal);
+      border-radius: var(--radius-full);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--cream);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .mobile-menu.active { display: flex; opacity: 1; }
+
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .mobile-menu a:hover { color: var(--coral); }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 6rem 2rem 4rem;
+      background: linear-gradient(135deg, var(--cream) 0%, var(--yellow-soft) 50%, var(--cream) 100%);
+    }
+
+    .hero-content {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--white);
+      padding: 0.5rem 1.5rem;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--coral);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 1.5rem;
+      animation: fadeSlideUp 0.8s 0.2s both;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      animation: fadeSlideUp 0.8s 0.4s both;
+    }
+
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--coral), #FF8E8E, var(--lavender));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      color: var(--charcoal-light);
+      margin-bottom: 2.5rem;
+      max-width: 550px;
+      margin-left: auto;
+      margin-right: auto;
+      animation: fadeSlideUp 0.8s 0.6s both;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeSlideUp 0.8s 0.8s both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2.2rem;
+      border-radius: var(--radius-full);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s, background 0.3s;
+    }
+
+    .btn:active { transform: scale(0.97); }
+
+    .btn-primary {
+      background: var(--coral);
+      color: var(--white);
+      box-shadow: 0 6px 24px rgba(255, 107, 107, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--coral-dark);
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 10px 32px rgba(255, 107, 107, 0.4);
+    }
+
+    .btn-secondary {
+      background: var(--white);
+      color: var(--charcoal);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Hero decorative blobs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(0px);
+      opacity: 0.6;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .blob-1 {
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(135deg, var(--coral), #FF9A9E);
+      top: 10%;
+      left: -5%;
+      animation: blobFloat 8s ease-in-out infinite;
+    }
+
+    .blob-2 {
+      width: 250px;
+      height: 250px;
+      background: linear-gradient(135deg, var(--yellow), #FFEaa0);
+      top: 60%;
+      right: -3%;
+      animation: blobFloat 10s ease-in-out infinite reverse;
+    }
+
+    .blob-3 {
+      width: 180px;
+      height: 180px;
+      background: linear-gradient(135deg, var(--mint), #A8E6CF);
+      bottom: 15%;
+      left: 10%;
+      animation: blobFloat 9s ease-in-out infinite 2s;
+    }
+
+    .blob-4 {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, var(--lavender), #E4D4FF);
+      top: 20%;
+      right: 15%;
+      animation: blobFloat 7s ease-in-out infinite 1s;
+    }
+
+    /* Nail polish drip decorative element */
+    .drip-container {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .drip-container svg { width: 100%; height: auto; }
+
+    /* ===== SECTIONS COMMON ===== */
+    section {
+      padding: 6rem 2rem;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-tag {
+      display: inline-block;
+      background: var(--coral);
+      color: var(--white);
+      padding: 0.35rem 1.2rem;
+      border-radius: var(--radius-full);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .section-tag.mint { background: var(--mint); }
+    .section-tag.yellow { background: var(--yellow); color: var(--charcoal); }
+    .section-tag.lavender { background: var(--lavender); color: var(--charcoal); }
+
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--charcoal);
+    }
+
+    .section-header p {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      color: var(--charcoal-light);
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== SERVICES ===== */
+    .services {
+      background: var(--white);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: var(--cream);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--coral);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .service-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+      font-size: 1.8rem;
+    }
+
+    .service-icon.coral { background: rgba(255, 107, 107, 0.15); }
+    .service-icon.mint { background: rgba(78, 205, 196, 0.15); }
+    .service-icon.yellow { background: rgba(255, 230, 109, 0.25); }
+    .service-icon.lavender { background: rgba(201, 177, 255, 0.2); }
+
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card p {
+      color: var(--charcoal-light);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-price {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--coral);
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials {
+      background: linear-gradient(180deg, var(--cream) 0%, var(--yellow-soft) 100%);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      position: relative;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .testimonial-card:hover { transform: translateY(-4px); }
+
+    .testimonial-card:nth-child(1) { border-top: 4px solid var(--coral); }
+    .testimonial-card:nth-child(2) { border-top: 4px solid var(--mint); }
+    .testimonial-card:nth-child(3) { border-top: 4px solid var(--lavender); }
+
+    .testimonial-stars {
+      color: var(--yellow);
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+      letter-spacing: 2px;
+    }
+
+    .testimonial-card blockquote {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--charcoal);
+      margin-bottom: 1.2rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--white);
+    }
+
+    .testimonial-avatar.coral { background: var(--coral); }
+    .testimonial-avatar.mint { background: var(--mint); }
+    .testimonial-avatar.lavender { background: var(--lavender); }
+
+    .testimonial-author-info strong {
+      display: block;
+      font-size: 0.95rem;
+    }
+
+    .testimonial-author-info span {
+      font-size: 0.85rem;
+      color: var(--charcoal-light);
+    }
+
+    /* ===== BOOKING & CONTACT ===== */
+    .booking {
+      background: var(--white);
+    }
+
+    .booking-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .booking-form {
+      background: var(--cream);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+    }
+
+    .booking-form h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      color: var(--charcoal);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid transparent;
+      border-radius: var(--radius-sm);
+      background: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--coral);
+      box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.1);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-submit {
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+
+    /* Contact info */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .contact-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.3rem;
+    }
+
+    .contact-icon.coral { background: rgba(255, 107, 107, 0.12); }
+    .contact-icon.mint { background: rgba(78, 205, 196, 0.12); }
+    .contact-icon.yellow { background: rgba(255, 230, 109, 0.2); }
+    .contact-icon.lavender { background: rgba(201, 177, 255, 0.15); }
+
+    .contact-item strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .contact-item span, .contact-item a {
+      font-size: 0.9rem;
+      color: var(--charcoal-light);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .contact-item a:hover { color: var(--coral); }
+
+    .hours-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.3rem 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .hours-grid dt {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .hours-grid dd {
+      font-size: 0.9rem;
+      color: var(--charcoal-light);
+    }
+
+    /* Map embed placeholder */
+    .map-container {
+      margin-top: 2rem;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      height: 200px;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px dashed var(--cream-dark);
+      transition: border-color 0.3s;
+    }
+
+    .map-container:hover { border-color: var(--coral); }
+
+    .map-container a {
+      color: var(--coral);
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .map-container a:hover { text-decoration: underline; }
+
+    .map-pin { font-size: 2rem; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.7);
+      padding: 3rem 2rem 1.5rem;
+      text-align: center;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-social {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      text-decoration: none;
+      color: rgba(255,255,255,0.8);
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .footer-social:hover {
+      background: var(--coral);
+      transform: translateY(-3px);
+      color: var(--white);
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-copy {
+      font-size: 0.85rem;
+      opacity: 0.5;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes blobFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(20px, -30px) scale(1.05); }
+      50% { transform: translate(-10px, 20px) scale(0.95); }
+      75% { transform: translate(15px, 10px) scale(1.02); }
+    }
+
+    /* Stagger children reveals */
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .stagger-4 { transition-delay: 0.4s; }
+    .stagger-5 { transition-delay: 0.5s; }
+    .stagger-6 { transition-delay: 0.6s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .hero h1 { font-size: clamp(2.2rem, 10vw, 3.5rem); }
+
+      .blob-1 { width: 180px; height: 180px; }
+      .blob-2 { width: 150px; height: 150px; }
+      .blob-3 { width: 100px; height: 100px; }
+      .blob-4 { width: 80px; height: 80px; }
+
+      .booking-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .form-row { grid-template-columns: 1fr; }
+
+      section { padding: 4rem 1.5rem; }
+
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .hero { padding: 5rem 1rem 3rem; }
+      .hero-badge { font-size: 0.8rem; }
+      .btn { padding: 0.8rem 1.6rem; font-size: 0.9rem; }
+      .booking-form { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo">Nicoles <span>Nagelstudio</span></a>
+    <ul class="nav-links">
+      <li><a href="#leistungen">Leistungen</a></li>
+      <li><a href="#bewertungen">Bewertungen</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+      <li><a href="#termin" class="nav-cta">Termin buchen</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#leistungen" class="mobile-link">Leistungen</a>
+    <a href="#bewertungen" class="mobile-link">Bewertungen</a>
+    <a href="#kontakt" class="mobile-link">Kontakt</a>
+    <a href="#termin" class="mobile-link">Termin buchen</a>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">Willkommen im Nagelstudio</div>
+      <h1>
+        Schöne Nägel,<br>
+        <span class="highlight">glückliche Momente</span>
+      </h1>
+      <p>Entspannte Atmosphäre, kreative Designs und stets ein Lächeln — dein Wohlfühl-Studio in Lauffen am Neckar.</p>
+      <div class="hero-buttons">
+        <a href="#termin" class="btn btn-primary">Jetzt Termin buchen</a>
+        <a href="#leistungen" class="btn btn-secondary">Unsere Leistungen</a>
+      </div>
+    </div>
+
+    <div class="drip-container">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none">
+        <path d="M0,0 C360,120 720,0 1080,80 C1260,110 1380,60 1440,80 L1440,120 L0,120 Z" fill="#ffffff"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="services" id="leistungen">
+    <div class="section-header reveal">
+      <span class="section-tag">Leistungen</span>
+      <h2>Was wir für dich tun</h2>
+      <p>Von klassischer Pflege bis hin zu kreativer Nagelkunst — bei uns bist du genau richtig.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card reveal stagger-1">
+        <div class="service-icon coral">&#128161;</div>
+        <h3>Maniküre</h3>
+        <p>Professionelle Handpflege mit Peeling, Massage und Lackierung — für gepflegte Hände und Nägel.</p>
+        <div class="service-price">ab 25 &euro;</div>
+      </div>
+
+      <div class="service-card reveal stagger-2">
+        <div class="service-icon mint">&#129506;</div>
+        <h3>Pediküre</h3>
+        <p>Wohltuende Fußpflege inklusive Fußbad, Hornhautentfernung und Nagelpflege zum Entspannen.</p>
+        <div class="service-price">ab 30 &euro;</div>
+      </div>
+
+      <div class="service-card reveal stagger-3">
+        <div class="service-icon yellow">&#10024;</div>
+        <h3>Gelmodellage</h3>
+        <p>Langanhaltende Gel-Nägel in deiner Wunschform und -farbe — natürlich oder glamourös.</p>
+        <div class="service-price">ab 45 &euro;</div>
+      </div>
+
+      <div class="service-card reveal stagger-4">
+        <div class="service-icon lavender">&#127773;</div>
+        <h3>Shellac / UV-Lack</h3>
+        <p>Spiegelglatter, bis zu 3 Wochen haltender Lack ohne Lackieren — kratzfest und glänzend.</p>
+        <div class="service-price">ab 35 &euro;</div>
+      </div>
+
+      <div class="service-card reveal stagger-5">
+        <div class="service-icon coral">&#127912;</div>
+        <h3>Nagelkunst</h3>
+        <p>Kreative Designs, Handmalerei, Glitzer und Folien — mach deine Nägel zum Kunstwerk.</p>
+        <div class="service-price">ab 40 &euro;</div>
+      </div>
+
+      <div class="service-card reveal stagger-6">
+        <div class="service-icon mint">&#128148;</div>
+        <h3>Nagelreparatur</h3>
+        <p>Abgebrochen oder eingerissen? Wir reparieren deinen Nagel schnell und zuverlässig.</p>
+        <div class="service-price">ab 10 &euro;</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="testimonials" id="bewertungen">
+    <div class="section-header reveal">
+      <span class="section-tag yellow">Bewertungen</span>
+      <h2>Was unsere Kundinnen sagen</h2>
+      <p>Über 500 zufriedene Kundinnen vertrauen uns — lies, was sie denken.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal stagger-1">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>Ich komme seit über zwei Jahren regelmäßig und bin jedes Mal begeistert! Nicole nimmt sich Zeit, berät individuell und die Nägel halten ewig. Absolute Empfehlung!</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar coral">SH</div>
+          <div class="testimonial-author-info">
+            <strong>Sarah H.</strong>
+            <span>Stammkundin</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal stagger-2">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>Endlich ein Studio, in dem ich mich richtig wohlfühle! Die Atmosphäre ist super entspannt und die Nagelkunst ist einfach wow. Meine Nägel waren noch nie so hübsch.</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar mint">LM</div>
+          <div class="testimonial-author-info">
+            <strong>Lisa M.</strong>
+            <span>Gelmodellage</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal stagger-3">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>Top Preise, super Qualität und Nicole ist einfach die Herzlichste! Die Shellac-Nägel halten bei mir problemlos drei Wochen. Komme gerne wieder!</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar lavender">JK</div>
+          <div class="testimonial-author-info">
+            <strong>Julia K.</strong>
+            <span>Shellac-Kundin</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BOOKING & CONTACT ===== -->
+  <section class="booking" id="termin">
+    <div class="section-header reveal">
+      <span class="section-tag mint">Termin</span>
+      <h2>Buche deinen Termin</h2>
+      <p>Schreib uns eine Nachricht oder ruf einfach an — wir melden uns schnellstmöglich zurück.</p>
+    </div>
+
+    <div class="booking-wrapper">
+      <form class="booking-form reveal" id="contact" onsubmit="handleSubmit(event)">
+        <h3>Termin anfragen</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" required placeholder="Dein Name">
+          </div>
+          <div class="form-group">
+            <label for="email">E-Mail *</label>
+            <input type="email" id="email" name="email" required placeholder="deine@email.de">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Telefon</label>
+            <input type="tel" id="phone" name="phone" placeholder="07133 ...">
+          </div>
+          <div class="form-group">
+            <label for="service">Gewünschte Leistung *</label>
+            <select id="service" name="service" required>
+              <option value="">Bitte wählen...</option>
+              <option value="manikuere">Maniküre</option>
+              <option value="pedikuere">Pediküre</option>
+              <option value="gelmodellage">Gelmodellage</option>
+              <option value="shellac">Shellac / UV-Lack</option>
+              <option value="nagelkunst">Nagelkunst</option>
+              <option value="reparatur">Nagelreparatur</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="date">Wunschtermin</label>
+          <input type="date" id="date" name="date">
+        </div>
+        <div class="form-group">
+          <label for="message">Nachricht</label>
+          <textarea id="message" name="message" placeholder="Besondere Wünsche oder Anmerkungen..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit">Anfrage absenden</button>
+        <p id="formSuccess" style="display:none; margin-top:1rem; color:var(--mint-dark); font-weight:600; text-align:center;">
+          Danke für deine Anfrage! Wir melden uns bei dir.
+        </p>
+      </form>
+
+      <div class="contact-info reveal" id="kontakt">
+        <h3>Kontakt & Anfahrt</h3>
+
+        <div class="contact-item">
+          <div class="contact-icon coral">&#128205;</div>
+          <div>
+            <strong>Adresse</strong>
+            <span>Teststr. 123<br>12345 Testhausen</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon mint">&#128222;</div>
+          <div>
+            <strong>Telefon</strong>
+            <a href="tel:+497133900000">07133 900 000</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon yellow">&#9993;</div>
+          <div>
+            <strong>E-Mail</strong>
+            <a href="mailto:info@nicoles-nagelstudio.de">info@nicoles-nagelstudio.de</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon lavender">&#128336;</div>
+          <div>
+            <strong>Öffnungszeiten</strong>
+            <dl class="hours-grid">
+              <dt>Mo – Fr</dt>
+              <dd>09:00 – 18:00</dd>
+              <dt>Sa</dt>
+              <dd>09:00 – 14:00</dd>
+              <dt>So</dt>
+              <dd>Geschlossen</dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="map-container">
+          <a href="https://maps.google.com/?q=Mühltorstr.+73+74348+Lauffen+am+Neckar" target="_blank" rel="noopener noreferrer">
+            <span class="map-pin">&#128205;</span>
+            <span>Auf Google Maps öffnen</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-top">
+      <a href="#" class="footer-social" aria-label="Instagram">&#128247;</a>
+      <a href="#" class="footer-social" aria-label="Facebook">&#128266;</a>
+      <a href="mailto:info@nicoles-nagelstudio.de" class="footer-social" aria-label="E-Mail">&#9993;</a>
+    </div>
+    <div class="footer-logo">Nicoles Nagelstudio</div>
+    <p class="footer-copy">&copy; 2026 Nicoles Nagelstudio. Alle Rechte vorbehalten.</p>
+  </footer>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    // Navigation scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+    revealElements.forEach(el => observer.observe(el));
+
+    // Form handling
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const successMsg = document.getElementById('formSuccess');
+
+      // In production, replace with actual form submission (e.g., Formspree, backend endpoint)
+      successMsg.style.display = 'block';
+      form.reset();
+
+      setTimeout(() => { successMsg.style.display = 'none'; }, 5000);
+    }
+  </script>
+
+</body>
+</html>
