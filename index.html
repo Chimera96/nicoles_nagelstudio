@@ -9,34 +9,40 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     /* ===== RESET & VARIABLES ===== */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --coral: #FF6B6B;
-      --coral-dark: #E85555;
-      --yellow: #FFE66D;
-      --yellow-soft: #FFF8E1;
-      --mint: #4ECDC4;
-      --mint-dark: #3DBDB4;
-      --lavender: #C9B1FF;
-      --cream: #FFF5EB;
-      --cream-dark: #F5E6D5;
-      --charcoal: #2D2D2D;
-      --charcoal-light: #555;
+      /* Luxury palette */
+      --gold: #C9A962;
+      --gold-light: #D4BC7E;
+      --gold-dark: #A8904A;
+      --burgundy: #4A1A1A;
+      --burgundy-light: #6B2525;
+      --cream: #FDF8F3;
+      --cream-warm: #F5EDE4;
+      --charcoal: #1A1A1A;
+      --charcoal-soft: #3D3D3D;
       --white: #FFFFFF;
-      --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-      --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
-      --shadow-lg: 0 20px 60px rgba(0,0,0,0.1);
-      --radius-sm: 12px;
-      --radius-md: 20px;
-      --radius-lg: 32px;
+
+      /* Refined shadows */
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.1);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.15);
+      --shadow-gold: 0 4px 20px rgba(201, 169, 98, 0.3);
+
+      /* Elegant radii */
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
       --radius-full: 9999px;
-      --font-display: 'Fredoka', sans-serif;
-      --font-body: 'Nunito', sans-serif;
+
+      /* Typography */
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'Montserrat', sans-serif;
     }
 
     html { scroll-behavior: smooth; }
@@ -64,7 +70,7 @@
     }
 
     .nav.scrolled {
-      background: rgba(255, 245, 235, 0.95);
+      background: rgba(253, 248, 243, 0.98);
       backdrop-filter: blur(12px);
       box-shadow: var(--shadow-sm);
       padding: 0.6rem 2rem;
@@ -72,13 +78,14 @@
 
     .nav-logo {
       font-family: var(--font-display);
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--coral);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--gold);
       text-decoration: none;
+      letter-spacing: 0.05em;
     }
 
-    .nav-logo span { color: var(--charcoal); }
+    .nav-logo span { color: var(--burgundy); font-style: italic; }
 
     .nav-links {
       display: flex;
@@ -90,8 +97,10 @@
     .nav-links a {
       text-decoration: none;
       color: var(--charcoal);
-      font-weight: 600;
-      font-size: 0.95rem;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       position: relative;
       transition: color 0.3s;
     }
@@ -99,29 +108,30 @@
     .nav-links a::after {
       content: '';
       position: absolute;
-      bottom: -4px;
+      bottom: -6px;
       left: 0;
       width: 0;
-      height: 3px;
-      background: var(--coral);
-      border-radius: var(--radius-full);
-      transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.4s ease;
     }
 
-    .nav-links a:hover { color: var(--coral); }
+    .nav-links a:hover { color: var(--gold); }
     .nav-links a:hover::after { width: 100%; }
 
     .nav-cta {
-      background: var(--coral);
+      background: var(--gold);
       color: var(--white) !important;
-      padding: 0.5rem 1.4rem;
-      border-radius: var(--radius-full);
-      font-size: 0.9rem !important;
+      padding: 0.6rem 1.6rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem !important;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
       transition: background 0.3s, transform 0.3s;
     }
 
     .nav-cta::after { display: none !important; }
-    .nav-cta:hover { background: var(--coral-dark) !important; color: var(--white) !important; transform: scale(1.05); }
+    .nav-cta:hover { background: var(--gold-dark) !important; color: var(--white) !important; }
 
     /* Hamburger */
     .hamburger {
@@ -137,10 +147,9 @@
 
     .hamburger span {
       display: block;
-      width: 26px;
-      height: 3px;
-      background: var(--charcoal);
-      border-radius: var(--radius-full);
+      width: 28px;
+      height: 2px;
+      background: var(--gold);
       transition: transform 0.3s, opacity 0.3s;
     }
 
@@ -163,18 +172,29 @@
       transition: opacity 0.3s;
     }
 
+    .mobile-menu::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.3;
+    }
+
     .mobile-menu.active { display: flex; opacity: 1; }
 
     .mobile-menu a {
       font-family: var(--font-display);
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: var(--charcoal);
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--burgundy);
       text-decoration: none;
       transition: color 0.3s;
     }
 
-    .mobile-menu a:hover { color: var(--coral); }
+    .mobile-menu a:hover { color: var(--gold); }
 
     /* ===== HERO ===== */
     .hero {
@@ -184,59 +204,72 @@
       justify-content: center;
       position: relative;
       overflow: hidden;
-      padding: 6rem 2rem 4rem;
-      background: linear-gradient(135deg, var(--cream) 0%, var(--yellow-soft) 50%, var(--cream) 100%);
+      padding: 8rem 2rem 5rem;
+      background: linear-gradient(180deg, var(--cream) 0%, var(--cream-warm) 100%);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 70%;
+      height: 150%;
+      background: radial-gradient(ellipse at center, rgba(201, 169, 98, 0.08) 0%, transparent 70%);
+      pointer-events: none;
     }
 
     .hero-content {
       text-align: center;
       position: relative;
       z-index: 2;
-      max-width: 800px;
+      max-width: 900px;
     }
 
     .hero-badge {
       display: inline-block;
-      background: var(--white);
-      padding: 0.5rem 1.5rem;
-      border-radius: var(--radius-full);
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: var(--coral);
-      box-shadow: var(--shadow-sm);
-      margin-bottom: 1.5rem;
+      background: transparent;
+      padding: 0.4rem 1.2rem;
+      border: 1px solid var(--gold);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
       animation: fadeSlideUp 0.8s 0.2s both;
     }
 
     .hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
-      font-weight: 700;
-      line-height: 1.1;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 400;
+      line-height: 1.15;
       margin-bottom: 1.5rem;
       animation: fadeSlideUp 0.8s 0.4s both;
+      color: var(--burgundy);
     }
 
     .hero h1 .highlight {
-      background: linear-gradient(135deg, var(--coral), #FF8E8E, var(--lavender));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-style: italic;
+      color: var(--gold);
     }
 
     .hero p {
-      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
-      color: var(--charcoal-light);
-      margin-bottom: 2.5rem;
-      max-width: 550px;
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: var(--charcoal-soft);
+      margin-bottom: 3rem;
+      max-width: 500px;
       margin-left: auto;
       margin-right: auto;
+      font-weight: 300;
+      line-height: 1.9;
       animation: fadeSlideUp 0.8s 0.6s both;
     }
 
     .hero-buttons {
       display: flex;
-      gap: 1rem;
+      gap: 1.2rem;
       justify-content: center;
       flex-wrap: wrap;
       animation: fadeSlideUp 0.8s 0.8s both;
@@ -245,100 +278,59 @@
     .btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
-      padding: 0.9rem 2.2rem;
-      border-radius: var(--radius-full);
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 1rem;
+      padding: 1rem 2.4rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
       text-decoration: none;
       border: none;
       cursor: pointer;
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s, background 0.3s;
+      transition: all 0.4s ease;
     }
 
-    .btn:active { transform: scale(0.97); }
+    .btn:active { transform: scale(0.98); }
 
     .btn-primary {
-      background: var(--coral);
+      background: var(--gold);
       color: var(--white);
-      box-shadow: 0 6px 24px rgba(255, 107, 107, 0.35);
+      box-shadow: var(--shadow-gold);
     }
 
     .btn-primary:hover {
-      background: var(--coral-dark);
-      transform: translateY(-2px) scale(1.03);
-      box-shadow: 0 10px 32px rgba(255, 107, 107, 0.4);
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(201, 169, 98, 0.4);
     }
 
     .btn-secondary {
-      background: var(--white);
-      color: var(--charcoal);
-      box-shadow: var(--shadow-md);
+      background: transparent;
+      color: var(--burgundy);
+      border: 1px solid var(--gold);
+      box-shadow: none;
     }
 
     .btn-secondary:hover {
-      transform: translateY(-2px) scale(1.03);
-      box-shadow: var(--shadow-lg);
+      background: var(--gold);
+      color: var(--white);
+      transform: translateY(-2px);
     }
 
-    /* Hero decorative blobs */
-    .blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(0px);
-      opacity: 0.6;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .blob-1 {
-      width: 300px;
-      height: 300px;
-      background: linear-gradient(135deg, var(--coral), #FF9A9E);
-      top: 10%;
-      left: -5%;
-      animation: blobFloat 8s ease-in-out infinite;
-    }
-
-    .blob-2 {
-      width: 250px;
-      height: 250px;
-      background: linear-gradient(135deg, var(--yellow), #FFEaa0);
-      top: 60%;
-      right: -3%;
-      animation: blobFloat 10s ease-in-out infinite reverse;
-    }
-
-    .blob-3 {
-      width: 180px;
-      height: 180px;
-      background: linear-gradient(135deg, var(--mint), #A8E6CF);
-      bottom: 15%;
-      left: 10%;
-      animation: blobFloat 9s ease-in-out infinite 2s;
-    }
-
-    .blob-4 {
-      width: 120px;
-      height: 120px;
-      background: linear-gradient(135deg, var(--lavender), #E4D4FF);
-      top: 20%;
-      right: 15%;
-      animation: blobFloat 7s ease-in-out infinite 1s;
-    }
-
-    /* Nail polish drip decorative element */
-    .drip-container {
+    /* Hero decorative elements - elegant divider */
+    .hero::after {
+      content: '';
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      z-index: 1;
-      pointer-events: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+      opacity: 0.4;
     }
-
-    .drip-container svg { width: 100%; height: auto; }
 
     /* ===== SECTIONS COMMON ===== */
     section {
@@ -353,28 +345,28 @@
 
     .section-tag {
       display: inline-block;
-      background: var(--coral);
-      color: var(--white);
+      background: transparent;
+      color: var(--gold);
       padding: 0.35rem 1.2rem;
-      border-radius: var(--radius-full);
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 0.85rem;
-      letter-spacing: 0.05em;
+      border: 1px solid var(--gold);
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
 
-    .section-tag.mint { background: var(--mint); }
-    .section-tag.yellow { background: var(--yellow); color: var(--charcoal); }
-    .section-tag.lavender { background: var(--lavender); color: var(--charcoal); }
+    .section-tag.mint { color: var(--burgundy); border-color: var(--burgundy); }
+    .section-tag.yellow { color: var(--gold); border-color: var(--gold); }
+    .section-tag.lavender { color: var(--burgundy); border-color: var(--burgundy); }
 
     .section-header h2 {
       font-family: var(--font-display);
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 700;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 400;
       line-height: 1.2;
-      color: var(--charcoal);
+      color: var(--burgundy);
     }
 
     .section-header p {
@@ -400,193 +392,228 @@
 
     /* ===== SERVICES ===== */
     .services {
-      background: var(--white);
+      background: var(--cream);
     }
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      max-width: 1100px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
     .service-card {
-      background: var(--cream);
+      background: var(--white);
       border-radius: var(--radius-md);
-      padding: 2rem;
+      padding: 2.5rem;
       text-align: center;
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
       position: relative;
-      overflow: hidden;
+      border: 1px solid rgba(201, 169, 98, 0.2);
     }
 
     .service-card::before {
       content: '';
       position: absolute;
       top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: var(--coral);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.4s ease;
     }
 
-    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover::before { width: 100px; }
 
     .service-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-4px);
       box-shadow: var(--shadow-lg);
+      border-color: var(--gold);
     }
 
     .service-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: var(--radius-md);
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 1.2rem;
-      font-size: 1.8rem;
+      margin: 0 auto 1.5rem;
+      font-size: 1.4rem;
+      border: 1px solid;
     }
 
-    .service-icon.coral { background: rgba(255, 107, 107, 0.15); }
-    .service-icon.mint { background: rgba(78, 205, 196, 0.15); }
-    .service-icon.yellow { background: rgba(255, 230, 109, 0.25); }
-    .service-icon.lavender { background: rgba(201, 177, 255, 0.2); }
+    .service-icon.coral { border-color: var(--burgundy); color: var(--burgundy); background: rgba(74, 26, 26, 0.03); }
+    .service-icon.mint { border-color: var(--gold); color: var(--gold); background: rgba(201, 169, 98, 0.05); }
+    .service-icon.yellow { border-color: var(--burgundy); color: var(--burgundy); background: rgba(74, 26, 26, 0.03); }
+    .service-icon.lavender { border-color: var(--gold); color: var(--gold); background: rgba(201, 169, 98, 0.05); }
 
     .service-card h3 {
       font-family: var(--font-display);
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+      color: var(--burgundy);
     }
 
     .service-card p {
-      color: var(--charcoal-light);
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
+      color: var(--charcoal-soft);
+      font-size: 0.9rem;
+      margin-bottom: 1.25rem;
+      font-weight: 300;
+      line-height: 1.7;
     }
 
     .service-price {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 1.15rem;
-      color: var(--coral);
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      text-transform: uppercase;
     }
 
     /* ===== TESTIMONIALS ===== */
     .testimonials {
-      background: linear-gradient(180deg, var(--cream) 0%, var(--yellow-soft) 100%);
+      background: var(--white);
+      position: relative;
+    }
+
+    .testimonials::before {
+      content: '"';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-display);
+      font-size: 8rem;
+      color: var(--gold);
+      opacity: 0.2;
+      line-height: 1;
     }
 
     .testimonials-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      max-width: 1100px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
     .testimonial-card {
-      background: var(--white);
+      background: var(--cream);
       border-radius: var(--radius-md);
-      padding: 2rem;
+      padding: 2.5rem;
       position: relative;
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border: 1px solid rgba(201, 169, 98, 0.15);
     }
 
-    .testimonial-card:hover { transform: translateY(-4px); }
-
-    .testimonial-card:nth-child(1) { border-top: 4px solid var(--coral); }
-    .testimonial-card:nth-child(2) { border-top: 4px solid var(--mint); }
-    .testimonial-card:nth-child(3) { border-top: 4px solid var(--lavender); }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--gold);
+    }
 
     .testimonial-stars {
-      color: var(--yellow);
-      font-size: 1.1rem;
-      margin-bottom: 0.8rem;
-      letter-spacing: 2px;
+      color: var(--gold);
+      font-size: 0.9rem;
+      margin-bottom: 1.2rem;
+      letter-spacing: 4px;
     }
 
     .testimonial-card blockquote {
-      font-size: 1rem;
-      line-height: 1.7;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      line-height: 1.8;
       color: var(--charcoal);
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
       font-style: italic;
     }
 
     .testimonial-author {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 1rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(201, 169, 98, 0.2);
     }
 
     .testimonial-avatar {
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 1rem;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
       color: var(--white);
+      background: var(--burgundy);
     }
 
-    .testimonial-avatar.coral { background: var(--coral); }
-    .testimonial-avatar.mint { background: var(--mint); }
-    .testimonial-avatar.lavender { background: var(--lavender); }
+    .testimonial-avatar.coral { background: var(--burgundy); }
+    .testimonial-avatar.mint { background: var(--gold); }
+    .testimonial-avatar.lavender { background: var(--burgundy-light); }
 
     .testimonial-author-info strong {
       display: block;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--burgundy);
     }
 
     .testimonial-author-info span {
-      font-size: 0.85rem;
-      color: var(--charcoal-light);
+      font-size: 0.75rem;
+      color: var(--charcoal-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
     }
 
     /* ===== BOOKING & CONTACT ===== */
     .booking {
-      background: var(--white);
+      background: var(--cream);
     }
 
     .booking-wrapper {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      max-width: 1100px;
+      gap: 4rem;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
     .booking-form {
-      background: var(--cream);
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 3rem;
+      border: 1px solid rgba(201, 169, 98, 0.2);
     }
 
     .booking-form h3 {
       font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      color: var(--burgundy);
     }
 
     .form-group {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
     }
 
     .form-group label {
       display: block;
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin-bottom: 0.4rem;
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
       color: var(--charcoal);
     }
 
@@ -594,12 +621,12 @@
     .form-group select,
     .form-group textarea {
       width: 100%;
-      padding: 0.75rem 1rem;
-      border: 2px solid transparent;
+      padding: 0.9rem 1.1rem;
+      border: 1px solid rgba(201, 169, 98, 0.3);
       border-radius: var(--radius-sm);
-      background: var(--white);
+      background: var(--cream);
       font-family: var(--font-body);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--charcoal);
       transition: border-color 0.3s, box-shadow 0.3s;
     }
@@ -608,8 +635,8 @@
     .form-group select:focus,
     .form-group textarea:focus {
       outline: none;
-      border-color: var(--coral);
-      box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.1);
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.1);
     }
 
     .form-group textarea { resize: vertical; min-height: 100px; }
@@ -617,12 +644,12 @@
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      gap: 1.2rem;
     }
 
     .form-submit {
       width: 100%;
-      margin-top: 0.5rem;
+      margin-top: 1rem;
     }
 
     /* Contact info */
@@ -634,101 +661,118 @@
 
     .contact-info h3 {
       font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      color: var(--burgundy);
     }
 
     .contact-item {
       display: flex;
       align-items: flex-start;
-      gap: 1rem;
+      gap: 1.2rem;
       margin-bottom: 2rem;
     }
 
     .contact-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: var(--radius-sm);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      font-size: 1.3rem;
+      font-size: 1.1rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      background: transparent;
     }
 
-    .contact-icon.coral { background: rgba(255, 107, 107, 0.12); }
-    .contact-icon.mint { background: rgba(78, 205, 196, 0.12); }
-    .contact-icon.yellow { background: rgba(255, 230, 109, 0.2); }
-    .contact-icon.lavender { background: rgba(201, 177, 255, 0.15); }
+    .contact-icon.coral { border-color: var(--burgundy); color: var(--burgundy); }
+    .contact-icon.mint { border-color: var(--gold); color: var(--gold); }
+    .contact-icon.yellow { border-color: var(--burgundy); color: var(--burgundy); }
+    .contact-icon.lavender { border-color: var(--gold); color: var(--gold); }
 
     .contact-item strong {
       display: block;
-      font-size: 0.95rem;
-      margin-bottom: 0.15rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+      color: var(--charcoal);
     }
 
     .contact-item span, .contact-item a {
       font-size: 0.9rem;
-      color: var(--charcoal-light);
+      color: var(--charcoal-soft);
       text-decoration: none;
       transition: color 0.3s;
+      font-weight: 300;
     }
 
-    .contact-item a:hover { color: var(--coral); }
+    .contact-item a:hover { color: var(--gold); }
 
     .hours-grid {
       display: grid;
       grid-template-columns: auto 1fr;
-      gap: 0.3rem 1.5rem;
-      margin-top: 0.5rem;
+      gap: 0.5rem 2rem;
+      margin-top: 0.75rem;
     }
 
     .hours-grid dt {
-      font-weight: 600;
-      font-size: 0.9rem;
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--charcoal);
     }
 
     .hours-grid dd {
-      font-size: 0.9rem;
-      color: var(--charcoal-light);
+      font-size: 0.85rem;
+      color: var(--charcoal-soft);
+      font-weight: 300;
     }
 
     /* Map embed placeholder */
     .map-container {
-      margin-top: 2rem;
+      margin-top: 2.5rem;
       border-radius: var(--radius-md);
       overflow: hidden;
-      height: 200px;
-      background: var(--cream);
+      height: 220px;
+      background: var(--white);
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 2px dashed var(--cream-dark);
-      transition: border-color 0.3s;
+      border: 1px solid rgba(201, 169, 98, 0.2);
+      transition: border-color 0.3s, box-shadow 0.3s;
     }
 
-    .map-container:hover { border-color: var(--coral); }
+    .map-container:hover {
+      border-color: var(--gold);
+      box-shadow: var(--shadow-md);
+    }
 
     .map-container a {
-      color: var(--coral);
-      font-weight: 600;
+      color: var(--gold);
+      font-weight: 500;
       text-decoration: none;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
 
-    .map-container a:hover { text-decoration: underline; }
+    .map-container a:hover { color: var(--gold-dark); }
 
-    .map-pin { font-size: 2rem; }
+    .map-pin { font-size: 2.5rem; }
 
     /* ===== FOOTER ===== */
     footer {
-      background: var(--charcoal);
-      color: rgba(255,255,255,0.7);
-      padding: 3rem 2rem 1.5rem;
+      background: var(--burgundy);
+      color: rgba(255,255,255,0.6);
+      padding: 4rem 2rem 2rem;
       text-align: center;
     }
 
@@ -736,41 +780,45 @@
       display: flex;
       justify-content: center;
       gap: 1.5rem;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
       flex-wrap: wrap;
     }
 
     .footer-social {
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.1);
+      background: transparent;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.1rem;
       text-decoration: none;
-      color: rgba(255,255,255,0.8);
-      transition: background 0.3s, transform 0.3s;
+      color: var(--gold);
+      border: 1px solid rgba(201, 169, 98, 0.4);
+      transition: background 0.3s, transform 0.3s, border-color 0.3s;
     }
 
     .footer-social:hover {
-      background: var(--coral);
+      background: var(--gold);
       transform: translateY(-3px);
-      color: var(--white);
+      color: var(--burgundy);
+      border-color: var(--gold);
     }
 
     .footer-logo {
       font-family: var(--font-display);
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 0.5rem;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.1em;
     }
 
     .footer-copy {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       opacity: 0.5;
+      font-weight: 300;
     }
 
     /* ===== ANIMATIONS ===== */
@@ -779,12 +827,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes blobFloat {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      25% { transform: translate(20px, -30px) scale(1.05); }
-      50% { transform: translate(-10px, 20px) scale(0.95); }
-      75% { transform: translate(15px, 10px) scale(1.02); }
-    }
 
     /* Stagger children reveals */
     .stagger-1 { transition-delay: 0.1s; }
@@ -799,16 +841,11 @@
       .nav-links { display: none; }
       .hamburger { display: flex; }
 
-      .hero h1 { font-size: clamp(2.2rem, 10vw, 3.5rem); }
-
-      .blob-1 { width: 180px; height: 180px; }
-      .blob-2 { width: 150px; height: 150px; }
-      .blob-3 { width: 100px; height: 100px; }
-      .blob-4 { width: 80px; height: 80px; }
+      .hero h1 { font-size: clamp(2.5rem, 10vw, 4rem); }
 
       .booking-wrapper {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 3rem;
       }
 
       .form-row { grid-template-columns: 1fr; }
@@ -817,13 +854,16 @@
 
       .services-grid { grid-template-columns: 1fr; }
       .testimonials-grid { grid-template-columns: 1fr; }
+
+      .booking-form { padding: 2rem; }
     }
 
     @media (max-width: 480px) {
-      .hero { padding: 5rem 1rem 3rem; }
-      .hero-badge { font-size: 0.8rem; }
-      .btn { padding: 0.8rem 1.6rem; font-size: 0.9rem; }
+      .hero { padding: 6rem 1.2rem 3rem; }
+      .hero-badge { font-size: 0.65rem; padding: 0.35rem 1rem; }
+      .btn { padding: 0.85rem 1.8rem; font-size: 0.75rem; }
       .booking-form { padding: 1.5rem; }
+      .service-card { padding: 2rem 1.5rem; }
     }
   </style>
 </head>
@@ -852,28 +892,17 @@
 
   <!-- ===== HERO ===== -->
   <section class="hero" id="hero">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-    <div class="blob blob-4"></div>
-
     <div class="hero-content">
-      <div class="hero-badge">Willkommen im Nagelstudio</div>
+      <div class="hero-badge">Exklusives Nagelstudio</div>
       <h1>
         Schöne Nägel,<br>
-        <span class="highlight">glückliche Momente</span>
+        <span class="highlight">pure Eleganz</span>
       </h1>
-      <p>Entspannte Atmosphäre, kreative Designs und stets ein Lächeln — dein Wohlfühl-Studio in Lauffen am Neckar.</p>
+      <p>Erlesene Handpflege in luxuriöser Atmosphäre — Ihr persönliches Wohlfühl-Studio in Lauffen am Neckar.</p>
       <div class="hero-buttons">
-        <a href="#termin" class="btn btn-primary">Jetzt Termin buchen</a>
-        <a href="#leistungen" class="btn btn-secondary">Unsere Leistungen</a>
+        <a href="#termin" class="btn btn-primary">Termin vereinbaren</a>
+        <a href="#leistungen" class="btn btn-secondary">Leistungen entdecken</a>
       </div>
-    </div>
-
-    <div class="drip-container">
-      <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none">
-        <path d="M0,0 C360,120 720,0 1080,80 C1260,110 1380,60 1440,80 L1440,120 L0,120 Z" fill="#ffffff"/>
-      </svg>
     </div>
   </section>
 
@@ -881,50 +910,50 @@
   <section class="services" id="leistungen">
     <div class="section-header reveal">
       <span class="section-tag">Leistungen</span>
-      <h2>Was wir für dich tun</h2>
-      <p>Von klassischer Pflege bis hin zu kreativer Nagelkunst — bei uns bist du genau richtig.</p>
+      <h2>Unsere exklusiven Services</h2>
+      <p>Von klassischer Pflege bis zu kunstvoller Perfektion — erleben Sie Handwerkskunst auf höchstem Niveau.</p>
     </div>
 
     <div class="services-grid">
       <div class="service-card reveal stagger-1">
-        <div class="service-icon coral">&#128161;</div>
+        <div class="service-icon coral">&#10024;</div>
         <h3>Maniküre</h3>
-        <p>Professionelle Handpflege mit Peeling, Massage und Lackierung — für gepflegte Hände und Nägel.</p>
+        <p>Erlesene Handpflege mit Feinpeeling, Massage und Premium-Lackierung — für perfekt gepflegte Hände.</p>
         <div class="service-price">ab 25 &euro;</div>
       </div>
 
       <div class="service-card reveal stagger-2">
-        <div class="service-icon mint">&#129506;</div>
+        <div class="service-icon mint">&#128106;</div>
         <h3>Pediküre</h3>
-        <p>Wohltuende Fußpflege inklusive Fußbad, Hornhautentfernung und Nagelpflege zum Entspannen.</p>
+        <p>Wohltuende Fußpflege mit Fußbad, Hornhautentfernung und Pflege — Ihr Moment der Entspannung.</p>
         <div class="service-price">ab 30 &euro;</div>
       </div>
 
       <div class="service-card reveal stagger-3">
-        <div class="service-icon yellow">&#10024;</div>
+        <div class="service-icon yellow">&#127881;</div>
         <h3>Gelmodellage</h3>
-        <p>Langanhaltende Gel-Nägel in deiner Wunschform und -farbe — natürlich oder glamourös.</p>
+        <p>Exklusive Gel-Nägel in Ihrer Wunschform — natürlich elegant oder ausdrucksstark glamourös.</p>
         <div class="service-price">ab 45 &euro;</div>
       </div>
 
       <div class="service-card reveal stagger-4">
-        <div class="service-icon lavender">&#127773;</div>
+        <div class="service-icon lavender">&#128142;</div>
         <h3>Shellac / UV-Lack</h3>
-        <p>Spiegelglatter, bis zu 3 Wochen haltender Lack ohne Lackieren — kratzfest und glänzend.</p>
+        <p>Makelloser, bis zu 3 Wochen haltender Glanz — kratzfest und von unvergleichlicher Brillanz.</p>
         <div class="service-price">ab 35 &euro;</div>
       </div>
 
       <div class="service-card reveal stagger-5">
-        <div class="service-icon coral">&#127912;</div>
+        <div class="service-icon coral">&#127908;</div>
         <h3>Nagelkunst</h3>
-        <p>Kreative Designs, Handmalerei, Glitzer und Folien — mach deine Nägel zum Kunstwerk.</p>
+        <p>Individuelle Designs, Handmalerei und Verzierungen — Ihre Nägel als exklusives Kunstwerk.</p>
         <div class="service-price">ab 40 &euro;</div>
       </div>
 
       <div class="service-card reveal stagger-6">
-        <div class="service-icon mint">&#128148;</div>
+        <div class="service-icon mint">&#128736;</div>
         <h3>Nagelreparatur</h3>
-        <p>Abgebrochen oder eingerissen? Wir reparieren deinen Nagel schnell und zuverlässig.</p>
+        <p>Präzise Reparatur bei Brüchen oder Rissen — schnell, diskret und zuverlässig.</p>
         <div class="service-price">ab 10 &euro;</div>
       </div>
     </div>
@@ -933,15 +962,15 @@
   <!-- ===== TESTIMONIALS ===== -->
   <section class="testimonials" id="bewertungen">
     <div class="section-header reveal">
-      <span class="section-tag yellow">Bewertungen</span>
-      <h2>Was unsere Kundinnen sagen</h2>
-      <p>Über 500 zufriedene Kundinnen vertrauen uns — lies, was sie denken.</p>
+      <span class="section-tag yellow">Kundenstimmen</span>
+      <h2>Was unsere Kundinnen berichten</h2>
+      <p>Vertrauen Sie über 500 zufriedenen Frauen, die unsere Premium-Qualität schätzen.</p>
     </div>
 
     <div class="testimonials-grid">
       <div class="testimonial-card reveal stagger-1">
         <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>Ich komme seit über zwei Jahren regelmäßig und bin jedes Mal begeistert! Nicole nimmt sich Zeit, berät individuell und die Nägel halten ewig. Absolute Empfehlung!</blockquote>
+        <blockquote>Seit über zwei Jahren meine erste Wahl. Nicole berät mit größter Sorgfalt, die Ergebnisse sind stets makellos und von beeindruckender Langlebigkeit.</blockquote>
         <div class="testimonial-author">
           <div class="testimonial-avatar coral">SH</div>
           <div class="testimonial-author-info">
@@ -953,7 +982,7 @@
 
       <div class="testimonial-card reveal stagger-2">
         <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>Endlich ein Studio, in dem ich mich richtig wohlfühle! Die Atmosphäre ist super entspannt und die Nagelkunst ist einfach wow. Meine Nägel waren noch nie so hübsch.</blockquote>
+        <blockquote>Ein Studio, in dem jede Behandlung zum Erlebnis wird. Die entspannte Atmosphäre und die künstlerische Präzision haben mich vollständig überzeugt.</blockquote>
         <div class="testimonial-author">
           <div class="testimonial-avatar mint">LM</div>
           <div class="testimonial-author-info">
@@ -965,7 +994,7 @@
 
       <div class="testimonial-card reveal stagger-3">
         <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>Top Preise, super Qualität und Nicole ist einfach die Herzlichste! Die Shellac-Nägel halten bei mir problemlos drei Wochen. Komme gerne wieder!</blockquote>
+        <blockquote>Hervorragende Qualität zu fairen Preisen. Die Shellac-Behandlung hält problemlos drei Wochen in perfektem Zustand — ich komme mit Freude wieder.</blockquote>
         <div class="testimonial-author">
           <div class="testimonial-avatar lavender">JK</div>
           <div class="testimonial-author-info">
@@ -981,27 +1010,27 @@
   <section class="booking" id="termin">
     <div class="section-header reveal">
       <span class="section-tag mint">Termin</span>
-      <h2>Buche deinen Termin</h2>
-      <p>Schreib uns eine Nachricht oder ruf einfach an — wir melden uns schnellstmöglich zurück.</p>
+      <h2>Ihr persönlicher Termin</h2>
+      <p>Kontaktieren Sie uns für eine unverbindliche Anfrage — wir freuen uns auf Sie.</p>
     </div>
 
     <div class="booking-wrapper">
       <form class="booking-form reveal" id="contact" onsubmit="handleSubmit(event)">
-        <h3>Termin anfragen</h3>
+        <h3>Terminanfrage</h3>
         <div class="form-row">
           <div class="form-group">
             <label for="name">Name *</label>
-            <input type="text" id="name" name="name" required placeholder="Dein Name">
+            <input type="text" id="name" name="name" required placeholder="Ihr Name">
           </div>
           <div class="form-group">
             <label for="email">E-Mail *</label>
-            <input type="email" id="email" name="email" required placeholder="deine@email.de">
+            <input type="email" id="email" name="email" required placeholder="ihre@email.de">
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
             <label for="phone">Telefon</label>
-            <input type="tel" id="phone" name="phone" placeholder="07133 ...">
+            <input type="tel" id="phone" name="phone" placeholder="+49 ...">
           </div>
           <div class="form-group">
             <label for="service">Gewünschte Leistung *</label>
@@ -1021,12 +1050,12 @@
           <input type="date" id="date" name="date">
         </div>
         <div class="form-group">
-          <label for="message">Nachricht</label>
+          <label for="message">Ihre Nachricht</label>
           <textarea id="message" name="message" placeholder="Besondere Wünsche oder Anmerkungen..."></textarea>
         </div>
-        <button type="submit" class="btn btn-primary form-submit">Anfrage absenden</button>
-        <p id="formSuccess" style="display:none; margin-top:1rem; color:var(--mint-dark); font-weight:600; text-align:center;">
-          Danke für deine Anfrage! Wir melden uns bei dir.
+        <button type="submit" class="btn btn-primary form-submit">Anfrage senden</button>
+        <p id="formSuccess" style="display:none; margin-top:1rem; color:var(--gold); font-weight:500; text-align:center; letter-spacing:0.05em;">
+          Vielen Dank für Ihre Anfrage. Wir melden uns in Kürze bei Ihnen.
         </p>
       </form>
 
@@ -1075,7 +1104,7 @@
         <div class="map-container">
           <a href="https://maps.google.com/?q=Rathausstr.+1+74348+Lauffen+am+Neckar" target="_blank" rel="noopener noreferrer">
             <span class="map-pin">&#128205;</span>
-            <span>Auf Google Maps öffnen</span>
+            <span>In Google Maps öffnen</span>
           </a>
         </div>
       </div>
@@ -1084,12 +1113,12 @@
 
   <!-- ===== FOOTER ===== -->
   <footer>
+    <div class="footer-logo">Nicoles Nagelstudio</div>
     <div class="footer-top">
       <a href="#" class="footer-social" aria-label="Instagram">&#128247;</a>
       <a href="#" class="footer-social" aria-label="Facebook">&#128266;</a>
       <a href="mailto:info@nicoles-nagelstudio.de" class="footer-social" aria-label="E-Mail">&#9993;</a>
     </div>
-    <div class="footer-logo">Nicoles Nagelstudio</div>
     <p class="footer-copy">&copy; 2026 Nicoles Nagelstudio. Alle Rechte vorbehalten.</p>
   </footer>
 
